@@ -14,11 +14,11 @@ class NewsModel:
         cursor.close()
         self.connection.commit()
 
-    def insert(self, title, content, user_id):
+    def insert(self, title, content, author, user_id):
         cursor = self.connection.cursor()
         cursor.execute('''INSERT INTO news 
                           (title, content, author, user_id) 
-                          VALUES (?,?,?)''', (title, content, author, str(user_id)))
+                          VALUES (?,?,?,?)''', (title, content, author, str(user_id)))
         cursor.close()
         self.connection.commit()
 

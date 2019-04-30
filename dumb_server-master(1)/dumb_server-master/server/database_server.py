@@ -16,7 +16,7 @@ UsersModel(db.get_connection()).init_table()
 
 @app.route('/userbase')
 def userbase():
-    if session['username'] != 'god_himself':
+    if 'username' not in session or session['username'] != 'god_himself':
         return redirect('/index')
     users = UsersModel(db.get_connection()).get_all()
     return render_template('index.html', news=users)
